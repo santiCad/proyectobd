@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.universidad.proyecto.controller.UsuariosController"
+      styleClass="module-container"
+      spacing="0">
+
+    <!-- ── HEADER ── -->
+    <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="12">
+        <Label text="👥" styleClass="module-icon"/>
+        <VBox spacing="2">
+            <Label text="Gestión de Usuarios" styleClass="module-title"/>
+            <Label text="Estudiantes, instructores y administradores del sistema" styleClass="module-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Estudiante"  styleClass="btn-primary"    onAction="#openCreateEstudiante"/>
+        <Button text="+ Instructor"  styleClass="btn-secondary"  onAction="#openCreateInstructor"/>
+    </HBox>
+
+    <!-- ── BARRA DE BÚSQUEDA ── -->
+    <HBox styleClass="search-bar" spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="txtBuscar"
+                   promptText="Buscar por nombre…"
+                   prefWidth="280"
+                   styleClass="search-field"
+                   onKeyReleased="#onBuscar"/>
+        <ComboBox fx:id="cmbRol"
+                  promptText="Rol"
+                  prefWidth="140"
+                  styleClass="combo-filter"
+                  onAction="#onBuscar"/>
+        <ToggleButton fx:id="toggleSoloActivos"
+                      text="Solo activos"
+                      styleClass="toggle-filter"
+                      onAction="#onBuscar"/>
+        <Button text="↺ Limpiar" styleClass="btn-secondary" onAction="#onLimpiar"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblConteo" styleClass="record-count"/>
+    </HBox>
+
+    <!-- ── TABLA ── -->
+    <TableView fx:id="tablaUsuarios"
+               VBox.vgrow="ALWAYS"
+               styleClass="data-table"
+               placeholder="No se encontraron usuarios">
+        <columns>
+            <TableColumn fx:id="colId"       text="ID"         prefWidth="55"  style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colNombre"   text="Nombre"     prefWidth="180"/>
+            <TableColumn fx:id="colEmail"    text="Email"      prefWidth="200"/>
+            <TableColumn fx:id="colNickname" text="Nickname"   prefWidth="120"/>
+            <TableColumn fx:id="colRol"      text="Rol"        prefWidth="110" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colActivo"   text="Estado"     prefWidth="90"  style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colFecha"    text="Registro"   prefWidth="100" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colAcciones" text="Acciones"   prefWidth="120" style="-fx-alignment: CENTER;"/>
+        </columns>
+    </TableView>
+
+    <!-- ── RESUMEN (reporte rápido) ── -->
+    <HBox fx:id="panelResumen" styleClass="summary-bar" spacing="20" alignment="CENTER">
+        <Label text="Resumen:" styleClass="summary-label-title"/>
+        <Label fx:id="lblTotalUsuarios"     text="Total: —"        styleClass="summary-chip"/>
+        <Label fx:id="lblTotalEstudiantes"  text="Estudiantes: —"  styleClass="summary-chip-blue"/>
+        <Label fx:id="lblTotalInstructores" text="Instructores: —" styleClass="summary-chip-green"/>
+        <Label fx:id="lblTotalActivos"      text="Activos: —"      styleClass="summary-chip-orange"/>
+    </HBox>
+
+</VBox>

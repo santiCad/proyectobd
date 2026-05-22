@@ -1,0 +1,529 @@
+/* ============================================================
+   CourseHub – Sistema de Gestión de Cursos Online
+   Estilo: Sidebar oscuro + área de contenido limpia y moderna
+   ============================================================ */
+
+/* ── Variables de diseño ── */
+* {
+    -color-primary:       #4F46E5;
+    -color-primary-dark:  #3730A3;
+    -color-primary-light: #EEF2FF;
+    -color-secondary:     #6B7280;
+    -color-bg:            #F9FAFB;
+    -color-surface:       #FFFFFF;
+    -color-border:        #E5E7EB;
+    -color-text:          #111827;
+    -color-text-muted:    #6B7280;
+    -color-danger:        #EF4444;
+    -color-success:       #10B981;
+    -color-warning:       #F59E0B;
+    -color-sidebar:       #1E1B4B;
+    -color-sidebar-hover: #312E81;
+    -color-sidebar-text:  #C7D2FE;
+}
+
+/* ── Root ── */
+.root {
+    -fx-font-family: "Segoe UI", "SF Pro Display", system;
+    -fx-font-size: 13px;
+    -fx-background-color: -color-bg;
+}
+
+/* ══════════════════════════════
+   SIDEBAR
+══════════════════════════════ */
+.sidebar {
+    -fx-background-color: #1E1B4B;
+    -fx-padding: 0;
+}
+
+.sidebar-header {
+    -fx-padding: 28 20 20 20;
+    -fx-spacing: 4;
+    -fx-background-color: #17154A;
+}
+
+.sidebar-icon-big {
+    -fx-font-size: 32px;
+}
+
+.sidebar-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.sidebar-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #A5B4FC;
+}
+
+.sidebar-sep {
+    -fx-background-color: #312E81;
+    -fx-border-color: transparent;
+    -fx-padding: 0 16;
+}
+
+.nav-section {
+    -fx-padding: 12 0 0 0;
+    -fx-spacing: 2;
+}
+
+.nav-section-label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6366F1;
+    -fx-padding: 8 20 4 20;
+    -fx-letter-spacing: 1px;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #C7D2FE;
+    -fx-font-size: 13px;
+    -fx-padding: 10 20;
+    -fx-alignment: CENTER_LEFT;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.nav-btn:hover {
+    -fx-background-color: #312E81;
+    -fx-text-fill: white;
+}
+
+.nav-btn-active {
+    -fx-background-color: #4338CA;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 0 3;
+    -fx-border-color: #A5B4FC;
+}
+
+.sidebar-footer {
+    -fx-padding: 12 20 16 20;
+    -fx-spacing: 2;
+}
+
+.sidebar-footer-text {
+    -fx-font-size: 10px;
+    -fx-text-fill: #6366F1;
+}
+
+/* ══════════════════════════════
+   ÁREA DE CONTENIDO
+══════════════════════════════ */
+.content-area {
+    -fx-background-color: -color-bg;
+}
+
+/* ══════════════════════════════
+   MÓDULO – Encabezado
+══════════════════════════════ */
+.module-container {
+    -fx-background-color: -color-bg;
+}
+
+.module-header {
+    -fx-background-color: -color-surface;
+    -fx-padding: 20 24;
+    -fx-border-color: -color-border;
+    -fx-border-width: 0 0 1 0;
+    -fx-spacing: 14;
+}
+
+.module-icon {
+    -fx-font-size: 28px;
+}
+
+.module-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text;
+}
+
+.module-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -color-text-muted;
+}
+
+/* ══════════════════════════════
+   BARRA DE BÚSQUEDA
+══════════════════════════════ */
+.search-bar {
+    -fx-background-color: -color-surface;
+    -fx-padding: 12 24;
+    -fx-border-color: -color-border;
+    -fx-border-width: 0 0 1 0;
+}
+
+.search-field {
+    -fx-background-color: #F3F4F6;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 7 12;
+}
+
+.search-field:focused {
+    -fx-border-color: -color-primary;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(79,70,229,0.15), 4, 0, 0, 0);
+}
+
+.combo-filter {
+    -fx-background-color: #F3F4F6;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.toggle-filter {
+    -fx-background-color: #F3F4F6;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 6 14;
+    -fx-cursor: hand;
+}
+
+.toggle-filter:selected {
+    -fx-background-color: -color-primary-light;
+    -fx-border-color: -color-primary;
+    -fx-text-fill: -color-primary;
+}
+
+.record-count {
+    -fx-font-size: 12px;
+    -fx-text-fill: -color-text-muted;
+}
+
+/* ══════════════════════════════
+   TABLA DE DATOS
+══════════════════════════════ */
+.data-table {
+    -fx-background-color: -color-surface;
+    -fx-border-color: transparent;
+    -fx-table-cell-border-color: transparent;
+}
+
+.data-table .column-header-background {
+    -fx-background-color: #F8FAFC;
+}
+
+.data-table .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: -color-border;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 10 12;
+}
+
+.data-table .column-header .label {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #374151;
+    -fx-text-transform: uppercase;
+}
+
+.data-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent -color-border transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0;
+}
+
+.data-table .table-row-cell:odd {
+    -fx-background-color: #FAFAFA;
+}
+
+.data-table .table-row-cell:selected {
+    -fx-background-color: -color-primary-light;
+}
+
+.data-table .table-row-cell:hover {
+    -fx-background-color: #F0F4FF;
+}
+
+.data-table .table-cell {
+    -fx-padding: 10 12;
+    -fx-text-fill: -color-text;
+}
+
+/* Tabla pequeña de módulos */
+.data-table-sm {
+    -fx-background-color: #FAFAFA;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.data-table-sm .column-header-background {
+    -fx-background-color: #F1F5F9;
+}
+
+.data-table-sm .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent -color-border transparent;
+}
+
+/* ══════════════════════════════
+   BADGES DE ESTADO
+══════════════════════════════ */
+.badge {
+    -fx-padding: 3 10;
+    -fx-background-radius: 12;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.badge-green {
+    -fx-background-color: #D1FAE5;
+    -fx-text-fill: #065F46;
+}
+
+.badge-orange {
+    -fx-background-color: #FEF3C7;
+    -fx-text-fill: #92400E;
+}
+
+.badge-gray {
+    -fx-background-color: #F3F4F6;
+    -fx-text-fill: #374151;
+}
+
+.badge-blue {
+    -fx-background-color: #DBEAFE;
+    -fx-text-fill: #1E40AF;
+}
+
+.badge-purple {
+    -fx-background-color: #EDE9FE;
+    -fx-text-fill: #5B21B6;
+}
+
+.badge-red {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #991B1B;
+}
+
+/* ══════════════════════════════
+   BOTONES
+══════════════════════════════ */
+.btn-primary {
+    -fx-background-color: -color-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 9 18;
+    -fx-background-radius: 7;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.btn-primary:hover {
+    -fx-background-color: -color-primary-dark;
+    -fx-effect: dropshadow(gaussian, rgba(79,70,229,0.3), 6, 0, 0, 2);
+}
+
+.btn-primary-sm {
+    -fx-background-color: -color-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 6 14;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-size: 12px;
+    -fx-border-color: transparent;
+}
+
+.btn-primary-sm:hover {
+    -fx-background-color: -color-primary-dark;
+}
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #374151;
+    -fx-padding: 8 16;
+    -fx-background-radius: 7;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 7;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #F9FAFB;
+    -fx-border-color: #9CA3AF;
+}
+
+.btn-icon {
+    -fx-background-color: transparent;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 4 8;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.btn-icon:hover {
+    -fx-background-color: -color-primary-light;
+    -fx-border-color: -color-primary;
+}
+
+.btn-icon-danger {
+    -fx-background-color: transparent;
+    -fx-border-color: #FECACA;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 4 8;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.btn-icon-danger:hover {
+    -fx-background-color: #FEF2F2;
+    -fx-border-color: -color-danger;
+}
+
+.btn-icon-danger:disabled {
+    -fx-opacity: 0.35;
+    -fx-cursor: default;
+}
+
+/* ══════════════════════════════
+   PANEL DE MÓDULOS
+══════════════════════════════ */
+.modules-panel {
+    -fx-background-color: white;
+    -fx-border-color: -color-border;
+    -fx-border-width: 1 0 0 0;
+}
+
+.modules-panel > .title {
+    -fx-background-color: #F8FAFC;
+    -fx-padding: 10 24;
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+    -fx-font-size: 13px;
+}
+
+.modules-inner {
+    -fx-padding: 12 24 16 24;
+    -fx-background-color: white;
+}
+
+.field-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+.selected-course-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: -color-primary;
+    -fx-font-style: italic;
+}
+
+/* ══════════════════════════════
+   BARRA RESUMEN (Usuarios)
+══════════════════════════════ */
+.summary-bar {
+    -fx-background-color: white;
+    -fx-padding: 10 24;
+    -fx-border-color: -color-border;
+    -fx-border-width: 1 0 0 0;
+}
+
+.summary-label-title {
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+    -fx-font-size: 12px;
+}
+
+.summary-chip {
+    -fx-background-color: #F3F4F6;
+    -fx-text-fill: #374151;
+    -fx-padding: 4 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.summary-chip-blue {
+    -fx-background-color: #DBEAFE;
+    -fx-text-fill: #1E40AF;
+    -fx-padding: 4 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.summary-chip-green {
+    -fx-background-color: #D1FAE5;
+    -fx-text-fill: #065F46;
+    -fx-padding: 4 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.summary-chip-orange {
+    -fx-background-color: #FEF3C7;
+    -fx-text-fill: #92400E;
+    -fx-padding: 4 12;
+    -fx-background-radius: 20;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ══════════════════════════════
+   DIÁLOGOS
+══════════════════════════════ */
+.dialog-pane {
+    -fx-background-color: white;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: -color-primary-light;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-font-size: 13px;
+    -fx-padding: 8 18;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button-bar .button:default {
+    -fx-background-color: -color-primary;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .button-bar .button:cancel-button {
+    -fx-background-color: white;
+    -fx-border-color: -color-border;
+    -fx-border-radius: 6;
+    -fx-text-fill: #374151;
+}
+
+/* ══════════════════════════════
+   SCROLL BAR
+══════════════════════════════ */
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #D1D5DB;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.universidad.proyecto.controller.MainController"
+            stylesheets="@../css/styles.css">
+
+    <!-- ════════════ SIDEBAR ════════════ -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220">
+            <!-- Logo / título -->
+            <VBox styleClass="sidebar-header" alignment="CENTER">
+                <Label text="🎓" styleClass="sidebar-icon-big"/>
+                <Label text="CourseHub" styleClass="sidebar-title"/>
+                <Label text="Sistema de Gestión" styleClass="sidebar-subtitle"/>
+            </VBox>
+
+            <Separator styleClass="sidebar-sep"/>
+
+            <!-- Navegación -->
+            <VBox styleClass="nav-section" VBox.vgrow="ALWAYS">
+                <Label text="MÓDULOS" styleClass="nav-section-label"/>
+
+                <Button fx:id="btnCursos"
+                        text="📚  Gestión de Cursos"
+                        styleClass="nav-btn, nav-btn-active"
+                        maxWidth="Infinity"
+                        onAction="#showCursos"/>
+
+                <Button fx:id="btnUsuarios"
+                        text="👥  Gestión de Usuarios"
+                        styleClass="nav-btn"
+                        maxWidth="Infinity"
+                        onAction="#showUsuarios"/>
+            </VBox>
+
+            <!-- Footer del sidebar -->
+            <VBox styleClass="sidebar-footer" alignment="BOTTOM_CENTER">
+                <Separator styleClass="sidebar-sep"/>
+                <Label text="Bases de Datos 2026-10" styleClass="sidebar-footer-text"/>
+                <Label text="PUJ Bogotá" styleClass="sidebar-footer-text"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- ════════════ CONTENIDO DINÁMICO ════════════ -->
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area"/>
+    </center>
+
+</BorderPane>
