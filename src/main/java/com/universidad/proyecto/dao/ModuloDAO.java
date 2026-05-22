@@ -7,9 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * DAO para operaciones CRUD sobre la tabla MODULO.
- */
 public class ModuloDAO {
 
     public List<Modulo> findByCurso(int idCurso) throws SQLException {
@@ -75,7 +72,7 @@ public class ModuloDAO {
     }
 
     public void delete(int idModulo) throws SQLException {
-        // Verificar si tiene lecciones
+        
         String checkSql = "SELECT COUNT(*) FROM LECCION WHERE ID_MODULO = ?";
         try (Connection conn = DatabaseConnection.getConnection()) {
             try (PreparedStatement ps = conn.prepareStatement(checkSql)) {

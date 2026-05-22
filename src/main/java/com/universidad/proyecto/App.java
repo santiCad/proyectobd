@@ -8,12 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Punto de entrada principal de la aplicación
- * Sistema de Gestión de Cursos Online - Bases de Datos 2026-10
- *
- * @author Nicolas Jimenez, Johan Cadena, Jhon Mejia, Alejandro Rodriguez
- */
 public class App extends Application {
 
     private static Stage primaryStage;

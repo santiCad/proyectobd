@@ -2,20 +2,16 @@ package com.universidad.proyecto.model;
 
 import java.time.LocalDate;
 
-/**
- * Modelo que representa la tabla ESTUDIANTE.
- * Extiende USUARIO mediante relación IS-A (herencia).
- */
 public class Estudiante extends Usuario {
 
     private String    areasInteres;
     private LocalDate fechaNacim;
     private String    nivelEducativo;
-    private int       notifEmail;   // 1 = sí, 0 = no
+    private int       notifEmail;   
 
-    // ──────────────────────────────────────────────
-    // Constructores
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public Estudiante() {
         super();
@@ -35,9 +31,9 @@ public class Estudiante extends Usuario {
         this.notifEmail     = notifEmail;
     }
 
-    // ──────────────────────────────────────────────
-    // Getters & Setters
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public String getAreasInteres()                         { return areasInteres; }
     public void setAreasInteres(String areasInteres)        { this.areasInteres = areasInteres; }

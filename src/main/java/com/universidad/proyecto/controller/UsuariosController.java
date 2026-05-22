@@ -19,10 +19,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Controlador del Módulo 2: Gestión de Usuarios.
- * CRUD de usuarios respetando la jerarquía USUARIO → ESTUDIANTE / INSTRUCTOR.
- */
 public class UsuariosController {
 
     @FXML private TableView<Usuario>         tablaUsuarios;
@@ -40,7 +36,7 @@ public class UsuariosController {
     @FXML private ToggleButton     toggleSoloActivos;
     @FXML private Label            lblConteo;
 
-    // Resumen
+    
     @FXML private Label lblTotalUsuarios;
     @FXML private Label lblTotalEstudiantes;
     @FXML private Label lblTotalInstructores;
@@ -49,7 +45,7 @@ public class UsuariosController {
     private final UsuarioDAO usuarioDAO = new UsuarioDAO();
     private ObservableList<Usuario> usuariosData = FXCollections.observableArrayList();
 
-    // ──────────────────────────────────────────────
+    
 
     @FXML
     public void initialize() {
@@ -61,9 +57,9 @@ public class UsuariosController {
         cargarUsuarios();
     }
 
-    // ──────────────────────────────────────────────
-    // Configuración columnas
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private void configurarColumnas() {
         colId.setCellValueFactory(new PropertyValueFactory<>("idUsuario"));
@@ -78,7 +74,7 @@ public class UsuariosController {
             return new SimpleStringProperty(f != null ? f.toString() : "");
         });
 
-        // Badge para rol
+        
         colRol.setCellFactory(col -> new TableCell<>() {
             @Override protected void updateItem(String rol, boolean empty) {
                 super.updateItem(rol, empty);
@@ -94,7 +90,7 @@ public class UsuariosController {
             }
         });
 
-        // Badge para estado
+        
         colActivo.setCellFactory(col -> new TableCell<>() {
             @Override protected void updateItem(String estado, boolean empty) {
                 super.updateItem(estado, empty);
@@ -106,7 +102,7 @@ public class UsuariosController {
             }
         });
 
-        // Acciones
+        
         colAcciones.setCellFactory(col -> new TableCell<>() {
             private final Button btnEdit       = new Button("✏️");
             private final Button btnDeactivate = new Button("🚫");
@@ -137,9 +133,9 @@ public class UsuariosController {
         tablaUsuarios.setItems(usuariosData);
     }
 
-    // ──────────────────────────────────────────────
-    // Carga de datos
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private void cargarUsuarios() {
         try {
@@ -147,7 +143,7 @@ public class UsuariosController {
             String rol    = cmbRol.getValue();
             List<Usuario> lista = usuarioDAO.findByFiltro(nombre, rol);
 
-            // Filtro solo activos
+            
             if (toggleSoloActivos != null && toggleSoloActivos.isSelected()) {
                 lista = lista.stream().filter(u -> u.getActivo() == 1).toList();
             }
@@ -172,9 +168,9 @@ public class UsuariosController {
         lblTotalActivos.setText("Activos: " + activos);
     }
 
-    // ──────────────────────────────────────────────
-    // Búsqueda
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     @FXML public void onBuscar()  { cargarUsuarios(); }
 
@@ -185,9 +181,9 @@ public class UsuariosController {
         cargarUsuarios();
     }
 
-    // ──────────────────────────────────────────────
-    // CREATE – Estudiante
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     @FXML public void openCreateEstudiante() {
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -199,7 +195,7 @@ public class UsuariosController {
         TextField   fNickname = (TextField)   grid.getChildren().get(5);
         PasswordField fPass   = (PasswordField) grid.getChildren().get(7);
 
-        // Campos específicos de estudiante
+        
         TextArea    fAreas    = new TextArea();
         fAreas.setPromptText("Ej: Java, Bases de datos, IA");
         fAreas.setPrefRowCount(2);
@@ -226,7 +222,7 @@ public class UsuariosController {
         if (!validarBase(fNombre, fEmail, fNickname, fPass)) return;
 
         try {
-            // Regla RN01/RN02: email y nickname únicos
+            
             if (usuarioDAO.existeEmail(fEmail.getText().trim(), 0)) {
                 AlertUtil.showWarning("Email duplicado", "Ya existe un usuario con ese email.");
                 return;
@@ -254,9 +250,9 @@ public class UsuariosController {
         }
     }
 
-    // ──────────────────────────────────────────────
-    // CREATE – Instructor
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     @FXML public void openCreateInstructor() {
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -314,9 +310,9 @@ public class UsuariosController {
         }
     }
 
-    // ──────────────────────────────────────────────
-    // UPDATE – datos básicos
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private void openEditDialog(Usuario usuario) {
         Dialog<ButtonType> dialog = new Dialog<>();
@@ -375,9 +371,9 @@ public class UsuariosController {
         }
     }
 
-    // ──────────────────────────────────────────────
-    // DELETE lógico
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private void deactivateUsuario(Usuario usuario) {
         if (!AlertUtil.showConfirmation("Desactivar usuario",
@@ -392,9 +388,9 @@ public class UsuariosController {
         }
     }
 
-    // ──────────────────────────────────────────────
-    // Helpers
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private GridPane buildBaseUserGrid() {
         GridPane grid = new GridPane();

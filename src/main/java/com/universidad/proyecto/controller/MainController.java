@@ -9,10 +9,6 @@ import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
 
-/**
- * Controlador de la ventana principal.
- * Gestiona la navegación entre módulos cargando los FXML en el contentArea.
- */
 public class MainController {
 
     @FXML private StackPane contentArea;
@@ -21,7 +17,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        // Cargar el módulo de cursos por defecto
+        
         showCursos();
     }
 
@@ -37,9 +33,9 @@ public class MainController {
         setActiveButton(btnUsuarios);
     }
 
-    // ──────────────────────────────────────────────
-    // Helpers
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private void loadView(String fxmlPath) {
         try {

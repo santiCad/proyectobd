@@ -2,10 +2,6 @@ package com.universidad.proyecto.model;
 
 import java.time.LocalDate;
 
-/**
- * Modelo que representa la tabla USUARIO.
- * Clase padre de la jerarquía de herencia: ESTUDIANTE, INSTRUCTOR, ADMINISTRADOR.
- */
 public class Usuario {
 
     private int    idUsuario;
@@ -13,13 +9,13 @@ public class Usuario {
     private String email;
     private String nickname;
     private String contrasena;
-    private String rol;          // 'estudiante', 'instructor', 'administrador'
-    private int    activo;       // 1 = activo, 0 = inactivo
+    private String rol;          
+    private int    activo;       
     private LocalDate fechaRegistro;
 
-    // ──────────────────────────────────────────────
-    // Constructores
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public Usuario() {}
 
@@ -36,9 +32,9 @@ public class Usuario {
         this.fechaRegistro = fechaRegistro;
     }
 
-    // ──────────────────────────────────────────────
-    // Getters & Setters
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public int getIdUsuario()                     { return idUsuario; }
     public void setIdUsuario(int idUsuario)       { this.idUsuario = idUsuario; }

@@ -21,13 +21,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Controlador del Módulo 1: Gestión de Cursos.
- * Incluye CRUD de cursos y CRUD de módulos del curso seleccionado.
- */
 public class CursosController {
 
-    // ── Tabla cursos ──
+    
     @FXML private TableView<Curso>      tablaCursos;
     @FXML private TableColumn<Curso,Integer> colId;
     @FXML private TableColumn<Curso,String>  colTitulo;
@@ -38,12 +34,12 @@ public class CursosController {
     @FXML private TableColumn<Curso,String>  colFecha;
     @FXML private TableColumn<Curso,Void>    colAcciones;
 
-    // ── Búsqueda ──
+    
     @FXML private TextField   txtBuscar;
     @FXML private ComboBox<String> cmbEstadoFiltro;
     @FXML private Label       lblConteo;
 
-    // ── Panel módulos ──
+    
     @FXML private TitledPane  panelModulos;
     @FXML private Label       lblCursoSeleccionado;
     @FXML private Button      btnAddModulo;
@@ -53,7 +49,7 @@ public class CursosController {
     @FXML private TableColumn<Modulo,String>  colModTitulo;
     @FXML private TableColumn<Modulo,Void>    colModAcciones;
 
-    // ── DAOs ──
+    
     private final CursoDAO    cursoDAO    = new CursoDAO();
     private final ModuloDAO   moduloDAO   = new ModuloDAO();
     private final UsuarioDAO  usuarioDAO  = new UsuarioDAO();
@@ -62,9 +58,9 @@ public class CursosController {
     private ObservableList<Modulo> modulosData  = FXCollections.observableArrayList();
     private Curso cursoSeleccionado = null;
 
-    // ──────────────────────────────────────────────
-    // Inicialización
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     @FXML
     public void initialize() {
@@ -73,7 +69,7 @@ public class CursosController {
         configurarFiltros();
         cargarCursos();
 
-        // Listener: al seleccionar curso → cargar módulos
+        
         tablaCursos.getSelectionModel().selectedItemProperty().addListener(
             (obs, old, nuevo) -> {
                 cursoSeleccionado = nuevo;
@@ -86,9 +82,9 @@ public class CursosController {
         );
     }
 
-    // ──────────────────────────────────────────────
-    // Configuración de columnas
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private void configurarColumnasCursos() {
         colId.setCellValueFactory(new PropertyValueFactory<>("idCurso"));
@@ -103,7 +99,7 @@ public class CursosController {
             return new SimpleStringProperty(f != null ? f.toString() : "");
         });
 
-        // Columna de estado con badge de color
+        
         colEstado.setCellFactory(col -> new TableCell<>() {
             @Override protected void updateItem(String estado, boolean empty) {
                 super.updateItem(estado, empty);
@@ -120,7 +116,7 @@ public class CursosController {
             }
         });
 
-        // Columna acciones
+        
         colAcciones.setCellFactory(col -> new TableCell<>() {
             private final Button btnEdit   = new Button("✏️");
             private final Button btnDelete = new Button("🗑️");
@@ -187,9 +183,9 @@ public class CursosController {
         cmbEstadoFiltro.setValue("Todos");
     }
 
-    // ──────────────────────────────────────────────
-    // Carga de datos
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private void cargarCursos() {
         try {
@@ -200,7 +196,7 @@ public class CursosController {
             } else {
                 todos = cursoDAO.findAll();
             }
-            // Filtrar por estado si aplica
+            
             String estado = cmbEstadoFiltro.getValue();
             if (estado != null && !estado.equals("Todos")) {
                 todos = todos.stream()
@@ -222,9 +218,9 @@ public class CursosController {
         }
     }
 
-    // ──────────────────────────────────────────────
-    // Búsqueda
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     @FXML public void onBuscar() { cargarCursos(); }
 
@@ -234,9 +230,9 @@ public class CursosController {
         cargarCursos();
     }
 
-    // ──────────────────────────────────────────────
-    // CRUD Cursos – Diálogos
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     @FXML public void openCreateDialog() { showCursoDialog(null); }
 
@@ -247,7 +243,7 @@ public class CursosController {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle(isEdit ? "Editar Curso" : "Nuevo Curso");
 
-        // Cargar instructores para el ComboBox
+        
         List<Instructor> instructores;
         try {
             instructores = usuarioDAO.findAllInstructores();
@@ -256,7 +252,7 @@ public class CursosController {
             return;
         }
 
-        // ── Formulario ──
+        
         GridPane grid = new GridPane();
         grid.setHgap(12); grid.setVgap(10);
         grid.setPadding(new Insets(16));
@@ -288,7 +284,7 @@ public class CursosController {
             fPrecio.setText(String.valueOf(cursoExistente.getPrecio()));
             fPuntaje.setText(String.valueOf(cursoExistente.getPuntajeMinCert()));
             fEstado.setValue(cursoExistente.getEstado());
-            // Seleccionar instructor
+            
             instructores.stream()
                 .filter(i -> i.getIdInstructor() == cursoExistente.getIdInstructor())
                 .findFirst().ifPresent(fInstructor::setValue);
@@ -313,7 +309,7 @@ public class CursosController {
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isEmpty() || result.get() == ButtonType.CANCEL) return;
 
-        // ── Validación ──
+        
         if (fTitulo.getText().isBlank()) {
             AlertUtil.showWarning("Validación", "El título es obligatorio.");
             return;
@@ -327,7 +323,7 @@ public class CursosController {
             return;
         }
 
-        // ── Persistencia ──
+        
         try {
             Curso c = isEdit ? cursoExistente : new Curso();
             c.setTitulo(fTitulo.getText().trim());
@@ -364,9 +360,9 @@ public class CursosController {
         }
     }
 
-    // ──────────────────────────────────────────────
-    // CRUD Módulos
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     @FXML public void openModuloDialog() { showModuloDialog(null); }
 
@@ -436,9 +432,9 @@ public class CursosController {
         }
     }
 
-    // ──────────────────────────────────────────────
-    // Helpers
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     private Label label(String text) {
         Label l = new Label(text);

@@ -2,26 +2,23 @@ package com.universidad.proyecto.model;
 
 import java.time.LocalDate;
 
-/**
- * Modelo que representa la tabla CURSO.
- */
 public class Curso {
 
     private int       idCurso;
     private String    titulo;
     private double    precio;
     private String    categoria;
-    private String    estado;           // 'en_desarrollo', 'publicado', 'archivado'
+    private String    estado;           
     private double    puntajeMinCert;
     private LocalDate fechaCreacion;
     private int       idInstructor;
 
-    // Campo de join (no columna propia): nombre del instructor para mostrar en tabla
+    
     private String    nombreInstructor;
 
-    // ──────────────────────────────────────────────
-    // Constructores
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public Curso() {}
 
@@ -38,9 +35,9 @@ public class Curso {
         this.idInstructor   = idInstructor;
     }
 
-    // ──────────────────────────────────────────────
-    // Getters & Setters
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public int getIdCurso()                             { return idCurso; }
     public void setIdCurso(int idCurso)                 { this.idCurso = idCurso; }

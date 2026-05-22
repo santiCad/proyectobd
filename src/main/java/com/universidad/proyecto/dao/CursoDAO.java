@@ -8,15 +8,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * DAO para operaciones CRUD sobre la tabla CURSO.
- * Usa PreparedStatement en todas las operaciones para prevenir SQL Injection.
- */
 public class CursoDAO {
 
-    // ──────────────────────────────────────────────────────────────
-    // READ – Listar todos (con JOIN a INSTRUCTOR/USUARIO)
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public List<Curso> findAll() throws SQLException {
         String sql = """
@@ -40,9 +36,9 @@ public class CursoDAO {
         return lista;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // READ – Buscar por título o categoría (LIKE, case-insensitive)
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public List<Curso> findByTituloOrCategoria(String filtro) throws SQLException {
         String sql = """
@@ -70,9 +66,9 @@ public class CursoDAO {
         return lista;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // READ – Por ID
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public Curso findById(int idCurso) throws SQLException {
         String sql = """
@@ -95,9 +91,9 @@ public class CursoDAO {
         return null;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // CREATE
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public void insert(Curso curso) throws SQLException {
         String sql = """
@@ -122,9 +118,9 @@ public class CursoDAO {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // UPDATE
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public void update(Curso curso) throws SQLException {
         String sql = """
@@ -154,18 +150,13 @@ public class CursoDAO {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // DELETE
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
-    /**
-     * Elimina un curso solo si no tiene inscripciones activas.
-     * Regla de negocio RN: no se puede eliminar un curso con estudiantes activos.
-     *
-     * @throws SQLException con mensaje descriptivo si hay inscripciones activas
-     */
+    
     public void delete(int idCurso) throws SQLException {
-        // Verificar inscripciones activas
+        
         String checkSql = """
                 SELECT COUNT(*) FROM INSCRIPCION
                  WHERE ID_CURSO = ? AND ESTADO = 'activo'
@@ -180,7 +171,7 @@ public class CursoDAO {
                     }
                 }
             }
-            // Proceder a eliminar
+            
             String deleteSql = "DELETE FROM CURSO WHERE ID_CURSO = ?";
             try (PreparedStatement ps = conn.prepareStatement(deleteSql)) {
                 ps.setInt(1, idCurso);
@@ -189,9 +180,9 @@ public class CursoDAO {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // Reporte: cursos agrupados por estado
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public List<Object[]> countByEstado() throws SQLException {
         String sql = """
@@ -211,9 +202,9 @@ public class CursoDAO {
         return resultado;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // Mapeo ResultSet → Curso
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     private Curso mapRow(ResultSet rs) throws SQLException {
         Curso c = new Curso();

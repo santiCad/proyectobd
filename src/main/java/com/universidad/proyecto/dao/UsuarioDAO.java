@@ -10,15 +10,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * DAO para operaciones CRUD sobre la tabla USUARIO y sus subtipos.
- * Maneja la jerarquía: USUARIO → ESTUDIANTE / INSTRUCTOR.
- */
 public class UsuarioDAO {
 
-    // ──────────────────────────────────────────────────────────────
-    // READ – Listar todos los usuarios
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public List<Usuario> findAll() throws SQLException {
         String sql = """
@@ -36,9 +32,9 @@ public class UsuarioDAO {
         return lista;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // READ – Filtrar por rol y/o nombre
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public List<Usuario> findByFiltro(String nombre, String rol) throws SQLException {
         StringBuilder sb = new StringBuilder("""
@@ -71,9 +67,9 @@ public class UsuarioDAO {
         return lista;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // READ – Solo instructores (para ComboBox en Cursos)
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public List<Instructor> findAllInstructores() throws SQLException {
         String sql = """
@@ -93,9 +89,9 @@ public class UsuarioDAO {
         return lista;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // CREATE – Insertar usuario + subtipo (transacción)
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public void insertEstudiante(Estudiante e) throws SQLException {
         String sqlU = """
@@ -176,9 +172,9 @@ public class UsuarioDAO {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // UPDATE – Datos básicos de usuario
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public void update(Usuario u) throws SQLException {
         String sql = """
@@ -200,9 +196,9 @@ public class UsuarioDAO {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // DELETE – Borrado lógico (marcar como inactivo)
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public void deactivate(int idUsuario) throws SQLException {
         String sql = "UPDATE USUARIO SET ACTIVO = 0 WHERE ID_USUARIO = ?";
@@ -213,9 +209,9 @@ public class UsuarioDAO {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // Validación unicidad: email y nickname
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public boolean existeEmail(String email, int excludeId) throws SQLException {
         String sql = "SELECT COUNT(*) FROM USUARIO WHERE EMAIL = ? AND ID_USUARIO != ?";
@@ -241,9 +237,9 @@ public class UsuarioDAO {
         }
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // Reporte: conteo por rol
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     public List<Object[]> countByRol() throws SQLException {
         String sql = """
@@ -263,9 +259,9 @@ public class UsuarioDAO {
         return resultado;
     }
 
-    // ──────────────────────────────────────────────────────────────
-    // Mapeo
-    // ──────────────────────────────────────────────────────────────
+    
+    
+    
 
     private Usuario mapUsuario(ResultSet rs) throws SQLException {
         Usuario u = new Usuario();

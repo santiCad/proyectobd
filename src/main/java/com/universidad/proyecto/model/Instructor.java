@@ -2,10 +2,6 @@ package com.universidad.proyecto.model;
 
 import java.time.LocalDate;
 
-/**
- * Modelo que representa la tabla INSTRUCTOR.
- * Extiende USUARIO mediante relación IS-A (herencia).
- */
 public class Instructor extends Usuario {
 
     private int    idInstructor;
@@ -13,9 +9,9 @@ public class Instructor extends Usuario {
     private String biografia;
     private double calificacionProm;
 
-    // ──────────────────────────────────────────────
-    // Constructores
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public Instructor() {
         super();
@@ -35,9 +31,9 @@ public class Instructor extends Usuario {
         this.calificacionProm = calificacionProm;
     }
 
-    // ──────────────────────────────────────────────
-    // Getters & Setters
-    // ──────────────────────────────────────────────
+    
+    
+    
 
     public int getIdInstructor()                            { return idInstructor; }
     public void setIdInstructor(int idInstructor)           { this.idInstructor = idInstructor; }

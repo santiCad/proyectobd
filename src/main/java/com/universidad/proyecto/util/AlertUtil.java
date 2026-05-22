@@ -5,9 +5,6 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-/**
- * Utilidades para mostrar diálogos de alerta al usuario.
- */
 public class AlertUtil {
 
     public static void showError(String title, String message) {
@@ -34,11 +31,7 @@ public class AlertUtil {
         alert.showAndWait();
     }
 
-    /**
-     * Diálogo de confirmación.
-     *
-     * @return true si el usuario confirmó
-     */
+    
     public static boolean showConfirmation(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);

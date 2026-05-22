@@ -7,10 +7,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- * Gestiona la conexión a la base de datos Oracle.
- * Lee los parámetros de conexión desde database.properties.
- */
 public class DatabaseConnection {
 
     private static final String PROPERTIES_FILE = "/config/database.properties";
@@ -37,12 +33,7 @@ public class DatabaseConnection {
         }
     }
 
-    /**
-     * Obtiene una nueva conexión a Oracle.
-     *
-     * @return Connection activa
-     * @throws SQLException si la conexión falla
-     */
+    
     public static Connection getConnection() throws SQLException {
         try {
             Class.forName("oracle.jdbc.OracleDriver");
@@ -53,11 +44,7 @@ public class DatabaseConnection {
         return DriverManager.getConnection(url, user, password);
     }
 
-    /**
-     * Verifica si la conexión es posible.
-     *
-     * @return true si conecta correctamente
-     */
+    
     public static boolean testConnection() {
         try (Connection conn = getConnection()) {
             return conn != null && !conn.isClosed();
@@ -66,9 +53,7 @@ public class DatabaseConnection {
         }
     }
 
-    /**
-     * Cierra un Connection de forma segura (sin lanzar excepción).
-     */
+    
     public static void closeQuietly(Connection conn) {
         if (conn != null) {
             try { conn.close(); } catch (SQLException ignored) {}

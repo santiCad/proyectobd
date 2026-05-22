@@ -11,7 +11,7 @@
       styleClass="module-container"
       spacing="0">
 
-    <!-- ── HEADER ── -->
+    
     <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="12">
         <Label text="📚" styleClass="module-icon"/>
         <VBox spacing="2">
@@ -22,7 +22,7 @@
         <Button text="+ Nuevo Curso" styleClass="btn-primary" onAction="#openCreateDialog"/>
     </HBox>
 
-    <!-- ── BARRA DE BÚSQUEDA ── -->
+    
     <HBox styleClass="search-bar" spacing="10" alignment="CENTER_LEFT">
         <TextField fx:id="txtBuscar"
                    promptText="Buscar por título o categoría…"
@@ -39,7 +39,7 @@
         <Label fx:id="lblConteo" styleClass="record-count"/>
     </HBox>
 
-    <!-- ── TABLA ── -->
+    
     <TableView fx:id="tablaCursos"
                VBox.vgrow="ALWAYS"
                styleClass="data-table"
@@ -56,7 +56,7 @@
         </columns>
     </TableView>
 
-    <!-- ── PANEL DE MÓDULOS (accordion expandible) ── -->
+    
     <TitledPane fx:id="panelModulos"
                 text="📦 Módulos del curso seleccionado"
                 expanded="false"

@@ -1,8 +1,5 @@
 package com.universidad.proyecto.model;
 
-/**
- * Modelo que representa la tabla MODULO.
- */
 public class Modulo {
 
     private int    idModulo;
@@ -10,10 +7,10 @@ public class Modulo {
     private int    orden;
     private int    idCurso;
 
-    // Campo de join
+    
     private String tituloCurso;
 
-    // ──────────────────────────────────────────────
+    
 
     public Modulo() {}
 
@@ -24,7 +21,7 @@ public class Modulo {
         this.idCurso  = idCurso;
     }
 
-    // ──────────────────────────────────────────────
+    
 
     public int getIdModulo()                        { return idModulo; }
     public void setIdModulo(int idModulo)           { this.idModulo = idModulo; }

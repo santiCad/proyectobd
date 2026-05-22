@@ -10,7 +10,7 @@
       styleClass="module-container"
       spacing="0">
 
-    <!-- ── HEADER ── -->
+    
     <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="12">
         <Label text="👥" styleClass="module-icon"/>
         <VBox spacing="2">
@@ -22,7 +22,7 @@
         <Button text="+ Instructor"  styleClass="btn-secondary"  onAction="#openCreateInstructor"/>
     </HBox>
 
-    <!-- ── BARRA DE BÚSQUEDA ── -->
+    
     <HBox styleClass="search-bar" spacing="10" alignment="CENTER_LEFT">
         <TextField fx:id="txtBuscar"
                    promptText="Buscar por nombre…"
@@ -43,7 +43,7 @@
         <Label fx:id="lblConteo" styleClass="record-count"/>
     </HBox>
 
-    <!-- ── TABLA ── -->
+    
     <TableView fx:id="tablaUsuarios"
                VBox.vgrow="ALWAYS"
                styleClass="data-table"
@@ -60,7 +60,7 @@
         </columns>
     </TableView>
 
-    <!-- ── RESUMEN (reporte rápido) ── -->
+    
     <HBox fx:id="panelResumen" styleClass="summary-bar" spacing="20" alignment="CENTER">
         <Label text="Resumen:" styleClass="summary-label-title"/>
         <Label fx:id="lblTotalUsuarios"     text="Total: —"        styleClass="summary-chip"/>
