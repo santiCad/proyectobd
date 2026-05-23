@@ -46,8 +46,8 @@
     
     <TableView fx:id="tablaUsuarios"
                VBox.vgrow="ALWAYS"
-               styleClass="data-table"
-               placeholder="No se encontraron usuarios">
+               styleClass="data-table">
+        <placeholder><Label text="No se encontraron usuarios"/></placeholder>
         <columns>
             <TableColumn fx:id="colId"       text="ID"         prefWidth="55"  style="-fx-alignment: CENTER;"/>
             <TableColumn fx:id="colNombre"   text="Nombre"     prefWidth="180"/>

@@ -46,8 +46,8 @@
                 <TableView fx:id="tablaEvaluaciones"
                            VBox.vgrow="ALWAYS"
                            prefHeight="420"
-                           styleClass="data-table"
-                           placeholder="No se encontraron evaluaciones">
+                           styleClass="data-table">
+                    <placeholder><Label text="No se encontraron evaluaciones"/></placeholder>
                     <columns>
                         <TableColumn fx:id="colEvalId"       text="ID"          prefWidth="55"  style="-fx-alignment: CENTER;"/>
                         <TableColumn fx:id="colEvalTitulo"   text="Título"      prefWidth="230"/>
@@ -86,8 +86,8 @@
                 <TableView fx:id="tablaResultados"
                            VBox.vgrow="ALWAYS"
                            prefHeight="420"
-                           styleClass="data-table"
-                           placeholder="No se encontraron resultados">
+                           styleClass="data-table">
+                    <placeholder><Label text="No se encontraron resultados"/></placeholder>
                     <columns>
                         <TableColumn fx:id="colResId"          text="ID"          prefWidth="55"  style="-fx-alignment: CENTER;"/>
                         <TableColumn fx:id="colResEstudiante"  text="Estudiante"  prefWidth="160"/>
@@ -126,8 +126,8 @@
                 <TableView fx:id="tablaCertificados"
                            VBox.vgrow="ALWAYS"
                            prefHeight="420"
-                           styleClass="data-table"
-                           placeholder="No se encontraron certificados">
+                           styleClass="data-table">
+                    <placeholder><Label text="No se encontraron certificados"/></placeholder>
                     <columns>
                         <TableColumn fx:id="colCertId"          text="ID"           prefWidth="55"  style="-fx-alignment: CENTER;"/>
                         <TableColumn fx:id="colCertEstudiante"  text="Estudiante"   prefWidth="180"/>

@@ -42,8 +42,8 @@
     
     <TableView fx:id="tablaCursos"
                VBox.vgrow="ALWAYS"
-               styleClass="data-table"
-               placeholder="No se encontraron cursos">
+               styleClass="data-table">
+        <placeholder><Label text="No se encontraron cursos"/></placeholder>
         <columns>
             <TableColumn fx:id="colId"          text="ID"          prefWidth="55"  style="-fx-alignment: CENTER;"/>
             <TableColumn fx:id="colTitulo"       text="Título"      prefWidth="220"/>
@@ -72,8 +72,8 @@
             </HBox>
             <TableView fx:id="tablaModulos"
                        prefHeight="160"
-                       styleClass="data-table-sm"
-                       placeholder="Selecciona un curso para ver sus módulos">
+                       styleClass="data-table-sm">
+                <placeholder><Label text="Selecciona un curso para ver sus módulos"/></placeholder>
                 <columns>
                     <TableColumn fx:id="colModId"      text="#"      prefWidth="50" style="-fx-alignment: CENTER;"/>
                     <TableColumn fx:id="colModOrden"   text="Orden"  prefWidth="60" style="-fx-alignment: CENTER;"/>

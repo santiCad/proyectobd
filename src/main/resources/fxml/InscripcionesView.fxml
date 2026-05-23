@@ -46,8 +46,8 @@
     <!-- TABLA INSCRIPCIONES -->
     <TableView fx:id="tablaInscripciones"
                VBox.vgrow="ALWAYS"
-               styleClass="data-table"
-               placeholder="No se encontraron inscripciones">
+               styleClass="data-table">
+        <placeholder><Label text="No se encontraron inscripciones"/></placeholder>
         <columns>
             <TableColumn fx:id="colId"          text="ID"          prefWidth="55"  style="-fx-alignment: CENTER;"/>
             <TableColumn fx:id="colEstudiante"  text="Estudiante"  prefWidth="180"/>
@@ -77,8 +77,8 @@
             </HBox>
             <TableView fx:id="tablaProgreso"
                        prefHeight="170"
-                       styleClass="data-table-sm"
-                       placeholder="Selecciona una inscripción para ver el progreso">
+                       styleClass="data-table-sm">
+                <placeholder><Label text="Selecciona una inscripción para ver el progreso"/></placeholder>
                 <columns>
                     <TableColumn fx:id="colPrgOrden"    text="#"           prefWidth="45"  style="-fx-alignment: CENTER;"/>
                     <TableColumn fx:id="colPrgLeccion"  text="Lección"     prefWidth="240"/>
