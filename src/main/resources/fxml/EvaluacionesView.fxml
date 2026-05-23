@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.universidad.proyecto.controller.EvaluacionesController"
+      styleClass="module-container"
+      spacing="0">
+
+    <!-- HEADER -->
+    <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="12">
+        <Label text="📝" styleClass="module-icon"/>
+        <VBox spacing="2">
+            <Label text="Evaluaciones y Certificados" styleClass="module-title"/>
+            <Label text="Quizzes, exámenes, resultados y certificados de los cursos" styleClass="module-subtitle"/>
+        </VBox>
+    </HBox>
+
+    <!-- TABS -->
+    <TabPane VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" styleClass="main-tab-pane">
+
+        <!-- ==================== TAB 1: EVALUACIONES ==================== -->
+        <Tab text="📋  Evaluaciones">
+            <VBox spacing="0">
+
+                <HBox styleClass="search-bar" spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="txtBuscarEval"
+                               promptText="Buscar evaluación…"
+                               prefWidth="220"
+                               styleClass="search-field"
+                               onKeyReleased="#onBuscarEval"/>
+                    <ComboBox fx:id="cmbCursoFiltroEval"
+                              promptText="Curso"
+                              prefWidth="220"
+                              styleClass="combo-filter"
+                              onAction="#onBuscarEval"/>
+                    <Button text="↺ Limpiar" styleClass="btn-secondary" onAction="#onLimpiarEval"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblConteoEval" styleClass="record-count"/>
+                    <Button text="+ Nueva Evaluación" styleClass="btn-primary" onAction="#openCreateEvalDialog"/>
+                </HBox>
+
+                <TableView fx:id="tablaEvaluaciones"
+                           VBox.vgrow="ALWAYS"
+                           prefHeight="420"
+                           styleClass="data-table"
+                           placeholder="No se encontraron evaluaciones">
+                    <columns>
+                        <TableColumn fx:id="colEvalId"       text="ID"          prefWidth="55"  style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colEvalTitulo"   text="Título"      prefWidth="230"/>
+                        <TableColumn fx:id="colEvalTipo"     text="Tipo"        prefWidth="110" style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colEvalPuntaje"  text="Puntaje mín." prefWidth="110" style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colEvalTiempo"   text="Tiempo"      prefWidth="100" style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colEvalCurso"    text="Curso"       prefWidth="200"/>
+                        <TableColumn fx:id="colEvalAcciones" text="Acciones"    prefWidth="110" style="-fx-alignment: CENTER;"/>
+                    </columns>
+                </TableView>
+
+            </VBox>
+        </Tab>
+
+        <!-- ==================== TAB 2: RESULTADOS ==================== -->
+        <Tab text="🎯  Resultados">
+            <VBox spacing="0">
+
+                <HBox styleClass="search-bar" spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="txtBuscarRes"
+                               promptText="Buscar estudiante…"
+                               prefWidth="220"
+                               styleClass="search-field"
+                               onKeyReleased="#onBuscarRes"/>
+                    <ComboBox fx:id="cmbEvalFiltroRes"
+                              promptText="Evaluación"
+                              prefWidth="240"
+                              styleClass="combo-filter"
+                              onAction="#onBuscarRes"/>
+                    <Button text="↺ Limpiar" styleClass="btn-secondary" onAction="#onLimpiarRes"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblConteoRes" styleClass="record-count"/>
+                    <Button text="+ Registrar Resultado" styleClass="btn-primary" onAction="#openRegistrarResultadoDialog"/>
+                </HBox>
+
+                <TableView fx:id="tablaResultados"
+                           VBox.vgrow="ALWAYS"
+                           prefHeight="420"
+                           styleClass="data-table"
+                           placeholder="No se encontraron resultados">
+                    <columns>
+                        <TableColumn fx:id="colResId"          text="ID"          prefWidth="55"  style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colResEstudiante"  text="Estudiante"  prefWidth="160"/>
+                        <TableColumn fx:id="colResEval"        text="Evaluación"  prefWidth="180"/>
+                        <TableColumn fx:id="colResCurso"       text="Curso"       prefWidth="160"/>
+                        <TableColumn fx:id="colResPuntaje"     text="Puntaje"     prefWidth="100" style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colResFecha"       text="Fecha"       prefWidth="110" style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colResAprobado"    text="Resultado"   prefWidth="120" style="-fx-alignment: CENTER;"/>
+                    </columns>
+                </TableView>
+
+            </VBox>
+        </Tab>
+
+        <!-- ==================== TAB 3: CERTIFICADOS ==================== -->
+        <Tab text="🏆  Certificados">
+            <VBox spacing="0">
+
+                <HBox styleClass="search-bar" spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="txtBuscarCert"
+                               promptText="Buscar estudiante…"
+                               prefWidth="200"
+                               styleClass="search-field"
+                               onKeyReleased="#onBuscarCert"/>
+                    <TextField fx:id="txtBuscarCertCurso"
+                               promptText="Buscar curso…"
+                               prefWidth="200"
+                               styleClass="search-field"
+                               onKeyReleased="#onBuscarCert"/>
+                    <Button text="↺ Limpiar" styleClass="btn-secondary" onAction="#onLimpiarCert"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="lblConteoCert" styleClass="record-count"/>
+                    <Button text="🏆 Generar Certificado" styleClass="btn-primary" onAction="#openGenerarCertificadoDialog"/>
+                </HBox>
+
+                <TableView fx:id="tablaCertificados"
+                           VBox.vgrow="ALWAYS"
+                           prefHeight="420"
+                           styleClass="data-table"
+                           placeholder="No se encontraron certificados">
+                    <columns>
+                        <TableColumn fx:id="colCertId"          text="ID"           prefWidth="55"  style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colCertEstudiante"  text="Estudiante"   prefWidth="180"/>
+                        <TableColumn fx:id="colCertCurso"       text="Curso"        prefWidth="200"/>
+                        <TableColumn fx:id="colCertCodigo"      text="Código"       prefWidth="200"/>
+                        <TableColumn fx:id="colCertFecha"       text="Fecha"        prefWidth="110" style="-fx-alignment: CENTER;"/>
+                        <TableColumn fx:id="colCertUrl"         text="URL descarga" prefWidth="260"/>
+                    </columns>
+                </TableView>
+
+            </VBox>
+        </Tab>
+
+    </TabPane>
+
+</VBox>

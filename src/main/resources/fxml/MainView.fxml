@@ -9,10 +9,10 @@
             fx:controller="com.universidad.proyecto.controller.MainController"
             stylesheets="@../css/styles.css">
 
-    
+    <!-- SIDEBAR -->
     <left>
         <VBox styleClass="sidebar" prefWidth="220">
-            
+
             <VBox styleClass="sidebar-header" alignment="CENTER">
                 <Label text="🎓" styleClass="sidebar-icon-big"/>
                 <Label text="CourseHub" styleClass="sidebar-title"/>
@@ -21,7 +21,6 @@
 
             <Separator styleClass="sidebar-sep"/>
 
-            
             <VBox styleClass="nav-section" VBox.vgrow="ALWAYS">
                 <Label text="MÓDULOS" styleClass="nav-section-label"/>
 
@@ -36,9 +35,20 @@
                         styleClass="nav-btn"
                         maxWidth="Infinity"
                         onAction="#showUsuarios"/>
+
+                <Button fx:id="btnInscripciones"
+                        text="📋  Inscripciones y Progreso"
+                        styleClass="nav-btn"
+                        maxWidth="Infinity"
+                        onAction="#showInscripciones"/>
+
+                <Button fx:id="btnEvaluaciones"
+                        text="📝  Evaluaciones y Certs."
+                        styleClass="nav-btn"
+                        maxWidth="Infinity"
+                        onAction="#showEvaluaciones"/>
             </VBox>
 
-            
             <VBox styleClass="sidebar-footer" alignment="BOTTOM_CENTER">
                 <Separator styleClass="sidebar-sep"/>
                 <Label text="Bases de Datos 2026-10" styleClass="sidebar-footer-text"/>
@@ -47,7 +57,7 @@
         </VBox>
     </left>
 
-    
+    <!-- CONTENIDO -->
     <center>
         <StackPane fx:id="contentArea" styleClass="content-area"/>
     </center>

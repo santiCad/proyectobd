@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.universidad.proyecto.controller.InscripcionesController"
+      styleClass="module-container"
+      spacing="0">
+
+    <!-- HEADER -->
+    <HBox styleClass="module-header" alignment="CENTER_LEFT" spacing="12">
+        <Label text="📋" styleClass="module-icon"/>
+        <VBox spacing="2">
+            <Label text="Inscripciones y Progreso" styleClass="module-title"/>
+            <Label text="Gestión de matrículas y avance por lección" styleClass="module-subtitle"/>
+        </VBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="+ Inscribir Estudiante" styleClass="btn-primary" onAction="#openInscribirDialog"/>
+    </HBox>
+
+    <!-- BARRA DE BÚSQUEDA -->
+    <HBox styleClass="search-bar" spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="txtBuscarEstudiante"
+                   promptText="Estudiante…"
+                   prefWidth="200"
+                   styleClass="search-field"
+                   onKeyReleased="#onBuscar"/>
+        <TextField fx:id="txtBuscarCurso"
+                   promptText="Curso…"
+                   prefWidth="200"
+                   styleClass="search-field"
+                   onKeyReleased="#onBuscar"/>
+        <ComboBox fx:id="cmbEstado"
+                  promptText="Estado"
+                  prefWidth="130"
+                  styleClass="combo-filter"
+                  onAction="#onBuscar"/>
+        <Button text="↺ Limpiar" styleClass="btn-secondary" onAction="#onLimpiar"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblConteo" styleClass="record-count"/>
+    </HBox>
+
+    <!-- TABLA INSCRIPCIONES -->
+    <TableView fx:id="tablaInscripciones"
+               VBox.vgrow="ALWAYS"
+               styleClass="data-table"
+               placeholder="No se encontraron inscripciones">
+        <columns>
+            <TableColumn fx:id="colId"          text="ID"          prefWidth="55"  style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colEstudiante"  text="Estudiante"  prefWidth="180"/>
+            <TableColumn fx:id="colCurso"       text="Curso"       prefWidth="200"/>
+            <TableColumn fx:id="colFecha"       text="Fecha Matric." prefWidth="110" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colProgreso"    text="Progreso"    prefWidth="160"/>
+            <TableColumn fx:id="colEstado"      text="Estado"      prefWidth="110" style="-fx-alignment: CENTER;"/>
+            <TableColumn fx:id="colAcciones"    text="Acciones"    prefWidth="90"  style="-fx-alignment: CENTER;"/>
+        </columns>
+    </TableView>
+
+    <!-- PANEL PROGRESO LECCIONES -->
+    <TitledPane fx:id="panelProgreso"
+                text="📖 Progreso de lecciones — inscripción seleccionada"
+                expanded="false"
+                styleClass="modules-panel">
+        <VBox spacing="8" styleClass="modules-inner">
+            <HBox spacing="8" alignment="CENTER_LEFT">
+                <Label text="Inscripción:" styleClass="field-label"/>
+                <Label fx:id="lblInscripcionSeleccionada"
+                       text="— selecciona una inscripción arriba —"
+                       styleClass="selected-course-label"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="✅ Marcar completada" styleClass="btn-primary-sm"
+                        onAction="#onMarcarCompletada"
+                        fx:id="btnMarcarCompletada" disable="true"/>
+            </HBox>
+            <TableView fx:id="tablaProgreso"
+                       prefHeight="170"
+                       styleClass="data-table-sm"
+                       placeholder="Selecciona una inscripción para ver el progreso">
+                <columns>
+                    <TableColumn fx:id="colPrgOrden"    text="#"           prefWidth="45"  style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colPrgLeccion"  text="Lección"     prefWidth="240"/>
+                    <TableColumn fx:id="colPrgTipo"     text="Tipo"        prefWidth="80"  style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colPrgOblig"    text="Obligatoria" prefWidth="90"  style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colPrgEstado"   text="Estado"      prefWidth="120" style="-fx-alignment: CENTER;"/>
+                    <TableColumn fx:id="colPrgFechaComp" text="Completada" prefWidth="110" style="-fx-alignment: CENTER;"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </TitledPane>
+
+    <!-- PANEL RESUMEN -->
+    <HBox styleClass="summary-bar" spacing="20" alignment="CENTER">
+        <Label text="Resumen:" styleClass="summary-label-title"/>
+        <Label fx:id="lblTotalActivos"      text="Activos: —"      styleClass="summary-chip-green"/>
+        <Label fx:id="lblTotalCompletados"  text="Completados: —"  styleClass="summary-chip-orange"/>
+        <Label fx:id="lblTotalAbandonados"  text="Abandonados: —"  styleClass="summary-chip"/>
+    </HBox>
+
+</VBox>
